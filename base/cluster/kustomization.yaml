@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- blue-cluster.yaml
+- processed-video-topic.yaml
+
+namespace: kafka
+
+# patches:
+# - target:
+#     kind: Kafka
+#     name: blue-cluster
+#   patch: |-
+#     - op: add
+#       path: /metadata/annotations
+#       value: 
+#         argocd.argoproj.io/hook: PreSync
+#         argocd.argoproj.io/sync-wave: "1" 
+# - target:
+#     kind: KafkaTopic
+#     name: processed-video
+#   patch: |-
+#     - op: add
+#       path: /metadata/annotations
+#       value: 
+#         argocd.argoproj.io/hook: PreSync
+#         argocd.argoproj.io/sync-wave: "2"         
